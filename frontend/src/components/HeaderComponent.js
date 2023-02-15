@@ -68,7 +68,7 @@ const HeaderComponent = () => {
     };
 
     useEffect(() => {
-        if (userInfo.isAdmin) {
+        if (userInfo && userInfo.isAdmin) {
             var audio = new Audio("/audio/chat-msg.mp3");
             const socket = socketIOClient();
             socket.emit(
@@ -79,21 +79,22 @@ const HeaderComponent = () => {
                 "server sends message from client to admin",
                 ({ user, message }) => {
                     dispatch(setSocket(socket));
-                    //   let chatRooms = {
-                    //     fddf54gfgfSocketID: [{ "client": "dsfdf" }, { "client": "dsfdf" }, { "admin": "dsfdf" }],
-                    //   };
+                    // let chatRooms = {
+                    //   fddf54gfgfSocketID: [{ "client": "dsfdf" }, { "client": "dsfdf" }, { "admin": "dsfdf" }],
+                    // };
                     dispatch(setChatRooms(user, message));
                     dispatch(setMessageReceived(true));
                     audio.play();
                 }
             );
             socket.on("disconnected", ({ reason, socketId }) => {
-                //   console.log(socketId, reason)
+                // console.log(socketId, reason)
                 dispatch(removeChatRoom(socketId));
             });
             return () => socket.disconnect();
         }
-    }, [dispatch, userInfo.isAdmin]);
+    }, [dispatch, userInfo]);
+
     console.log("categories:", categories);
 
     return (
@@ -143,7 +144,7 @@ const HeaderComponent = () => {
                         </InputGroup>
                     </Nav>
                     <Nav>
-                        {userInfo.isAdmin ? (
+                        {userInfo && userInfo.isAdmin ? (
                             <LinkContainer to="/admin/orders">
                                 <Nav.Link>
                                     Admin
@@ -152,7 +153,7 @@ const HeaderComponent = () => {
                                     )}
                                 </Nav.Link>
                             </LinkContainer>
-                        ) : userInfo.name && !userInfo.isAdmin ? (
+                        ) : userInfo && userInfo.name && !userInfo.isAdmin ? (
                             <NavDropdown
                                 title={`${userInfo.name} ${userInfo.lastName}`}
                                 id="collasible-nav-dropdown"
