@@ -167,7 +167,7 @@ const ProductListPageComponent = ({ getProducts, categories }) => {
                     ) : error ? (
                         <h1>Error while loading products. Try again later.</h1>
                     ) : (
-                        products.map((product) => (
+                        products?.map((product) => (
                             <ProductForListComponent
                                 key={product._id}
                                 images={product.images}
