@@ -8,7 +8,7 @@ const ProductCarouselComponent = ({ bestSellers }) => {
 
     return bestSellers.length > 0 ? (
         <Carousel>
-            {bestSellers.map((item, idx) => (
+            {bestSellers?.map((item, idx) => (
                 <Carousel.Item key={idx}>
                     <img
                         crossOrigin="anonymous"
