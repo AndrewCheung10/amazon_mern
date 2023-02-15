@@ -87,6 +87,8 @@ io.on("connection", (socket) => {
 const apiRoutes = require("./routes/apiRoutes");
 
 app.get("/", async (req, res, next) => {
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    res.sendFile(path.join(__dirname, "public", "index.html"));
     res.json({ message: "API running..." });
 });
 
