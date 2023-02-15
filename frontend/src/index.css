@@ -18,3 +18,7 @@ button {
     position: relative;
     z-index: 1;
 }
+
+.image-zoom {
+    z-index: 3;
+}

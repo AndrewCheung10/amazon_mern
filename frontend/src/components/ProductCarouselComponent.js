@@ -5,7 +5,7 @@ const ProductCarouselComponent = ({ bestSellers }) => {
     const cursorP = {
         cursor: "pointer",
     };
-
+    console.log(bestSellers);
     return bestSellers.length > 0 ? (
         <Carousel>
             {Array.isArray(bestSellers) &&
