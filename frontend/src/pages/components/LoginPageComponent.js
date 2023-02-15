@@ -45,13 +45,19 @@ const LoginPageComponent = ({
                         window.location.href = "/user";
                     else window.location.href = "/admin/orders";
                 })
-                .catch((er) =>
+                .catch((er) => {
+                    console.log(
+                        er.response.data.message
+                            ? er.response.data.message
+                            : er.response.data
+                    );
+
                     setLoginUserResponseState({
                         error: er.response.data.message
                             ? er.response.data.message
                             : er.response.data,
-                    })
-                );
+                    });
+                });
         }
 
         setValidated(true);
