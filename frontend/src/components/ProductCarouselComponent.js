@@ -5,26 +5,36 @@ const ProductCarouselComponent = ({ bestSellers }) => {
     const cursorP = {
         cursor: "pointer",
     };
-
     return bestSellers.length > 0 ? (
         <Carousel>
             {bestSellers &&
                 bestSellers.map((item, idx) => (
                     <Carousel.Item key={idx}>
-                        <LinkContainer
-                            style={cursorP}
-                            to={`/product-details/${item._id}`}
-                        >
-                            <img
-                                crossOrigin="anonymous"
-                                className="d-block w-100"
-                                style={{ height: "300px", objectFit: "cover" }}
-                                src={item.images ? item.images[0].path : null}
-                                alt="First slide"
-                            />
-                        </LinkContainer>
                         <Carousel.Caption>
-                            <h3>Bestseller in {item.category} Category</h3>
+                            <LinkContainer
+                                style={cursorP}
+                                to={`/product-details/${item._id}`}
+                            >
+                                <>
+                                    <img
+                                        crossOrigin="anonymous"
+                                        className="d-block w-100"
+                                        style={{
+                                            height: "300px",
+                                            objectFit: "cover",
+                                        }}
+                                        src={
+                                            item.images
+                                                ? item.images[0].path
+                                                : null
+                                        }
+                                        alt="First slide"
+                                    />
+                                    <h3>
+                                        Bestseller in {item.category} Category
+                                    </h3>
+                                </>
+                            </LinkContainer>
                             <p>{item.description}</p>
                         </Carousel.Caption>
                     </Carousel.Item>
