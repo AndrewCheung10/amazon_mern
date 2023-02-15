@@ -22,11 +22,11 @@ const ProductCarouselComponent = ({ bestSellers }) => {
                                 src={item.images ? item.images[0].path : null}
                                 alt="First slide"
                             />
-                            <Carousel.Caption>
-                                <h3>Bestseller in {item.category} Category</h3>
-                                <p>{item.description}</p>
-                            </Carousel.Caption>
                         </LinkContainer>
+                        <Carousel.Caption>
+                            <h3>Bestseller in {item.category} Category</h3>
+                            <p>{item.description}</p>
+                        </Carousel.Caption>
                     </Carousel.Item>
                 ))}
         </Carousel>
