@@ -5,18 +5,19 @@ const ProductCarouselComponent = ({ bestSellers }) => {
     const cursorP = {
         cursor: "pointer",
     };
+
     return bestSellers.length > 0 ? (
         <Carousel>
             {bestSellers.map((item, idx) => (
                 <Carousel.Item key={idx}>
+                    <img
+                        crossOrigin="anonymous"
+                        className="d-block w-100"
+                        style={{ height: "300px", objectFit: "cover" }}
+                        src={item.images ? item.images[0].path : null}
+                        alt="First slide"
+                    />
                     <Carousel.Caption>
-                        <img
-                            crossOrigin="anonymous"
-                            className="d-block w-100"
-                            style={{ height: "300px", objectFit: "cover" }}
-                            src={item.images ? item.images[0].path : null}
-                            alt="First slide"
-                        />
                         <LinkContainer
                             style={cursorP}
                             to={`/product-details/${item._id}`}
