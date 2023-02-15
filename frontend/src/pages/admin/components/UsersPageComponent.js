@@ -53,7 +53,7 @@ const UsersPageComponent = ({ fetchUsers, deleteUser }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map((user, idx) => (
+                        {users?.map((user, idx) => (
                             <tr key={idx}>
                                 <td>{idx + 1}</td>
                                 <td>{user.name}</td>
