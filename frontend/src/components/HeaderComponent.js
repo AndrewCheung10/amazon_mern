@@ -94,7 +94,7 @@ const HeaderComponent = () => {
             return () => socket.disconnect();
         }
     }, [userInfo.isAdmin]);
-    console.log(categories);
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
