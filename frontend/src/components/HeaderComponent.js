@@ -96,7 +96,7 @@ const HeaderComponent = () => {
     }, [dispatch, userInfo]);
 
     console.log("categories:", categories);
-
+    console.log("userInfo", userInfo);
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -192,7 +192,7 @@ const HeaderComponent = () => {
                         <LinkContainer to="/cart">
                             <Nav.Link>
                                 <Badge pill bg="danger">
-                                    {userInfo === [] || itemsCount === 0
+                                    {userInfo == {} || itemsCount === 0
                                         ? ""
                                         : itemsCount}
                                 </Badge>
