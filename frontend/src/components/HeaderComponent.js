@@ -192,7 +192,9 @@ const HeaderComponent = () => {
                         <LinkContainer to="/cart">
                             <Nav.Link>
                                 <Badge pill bg="danger">
-                                    {itemsCount === 0 ? "" : itemsCount}
+                                    {userInfo === [] || itemsCount === 0
+                                        ? ""
+                                        : itemsCount}
                                 </Badge>
                                 <i className="bi bi-cart-dash"></i>
                                 <span className="ms-1">CART</span>
