@@ -12,7 +12,9 @@ const OrdersPageComponent = ({ getOrders }) => {
     const dispatch = useDispatch();
     useEffect(() => {
         getOrders()
-            .then((orders) => setOrders(orders))
+            .then((orders) =>
+                Array.isArray(orders) ? setOrders(orders) : null
+            )
             .catch(
                 (er) => dispatch(logout())
                 // console.log(
