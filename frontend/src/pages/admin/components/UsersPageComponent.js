@@ -24,7 +24,7 @@ const UsersPageComponent = ({ fetchUsers, deleteUser }) => {
     useEffect(() => {
         const abctrl = new AbortController();
         fetchUsers(abctrl)
-            .then((res) => setUsers(res))
+            .then((res) => (Array.isArray(res) ? setUsers(res) : null))
             .catch(
                 (er) => dispatch(logout())
                 // console.log(

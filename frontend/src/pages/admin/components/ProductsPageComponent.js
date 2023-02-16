@@ -24,7 +24,7 @@ const ProductsPageComponent = ({ fetchProducts, deleteProduct }) => {
     useEffect(() => {
         const abctrl = new AbortController();
         fetchProducts(abctrl)
-            .then((res) => setProducts(res))
+            .then((res) => (Array.isArray(res) ? setProducts(res) : null))
             .catch(
                 (err) => {
                     dispatch(logout());
