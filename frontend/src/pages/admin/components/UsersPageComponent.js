@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 
 const UsersPageComponent = ({ fetchUsers, deleteUser }) => {
     const [users, setUsers] = useState([]);
+    console.log(users);
     const [userDeleted, setUserDeleted] = useState(false);
     const dispatch = useDispatch();
 
