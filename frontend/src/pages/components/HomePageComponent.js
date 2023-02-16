@@ -11,9 +11,7 @@ const HomePageComponent = ({ categories, getBestsellers }) => {
 
     useEffect(() => {
         getBestsellers()
-            .then((data) => {
-                setBestsellers(data);
-            })
+            .then((data) => (Array.isArray(data) ? setBestsellers(data) : null))
             .catch((er) =>
                 console.log(
                     er.response.data.message
@@ -22,9 +20,7 @@ const HomePageComponent = ({ categories, getBestsellers }) => {
                 )
             );
         setMainCategories((cat) =>
-            Array.isArray(categories)
-                ? categories.filter((item) => !item.name.includes("/"))
-                : null
+            categories.filter((item) => !item.name.includes("/"))
         );
     }, [categories]);
 
