@@ -192,7 +192,8 @@ const HeaderComponent = () => {
                         <LinkContainer to="/cart">
                             <Nav.Link>
                                 <Badge pill bg="danger">
-                                    {userInfo == {} || itemsCount === 0
+                                    {Object.keys(userInfo).length === 0 ||
+                                    itemsCount === 0
                                         ? ""
                                         : itemsCount}
                                 </Badge>
