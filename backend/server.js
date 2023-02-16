@@ -87,8 +87,8 @@ io.on("connection", (socket) => {
 const apiRoutes = require("./routes/apiRoutes");
 
 app.get("/", async (req, res, next) => {
-    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-    res.sendFile(path.join(__dirname, "public", "index.html"));
+    // res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    // res.sendFile(path.join(__dirname, "public", "index.html"));
     res.json({ message: "API running..." });
 });
 
@@ -105,7 +105,7 @@ app.use((error, req, res, next) => {
     next(error);
 });
 app.use((error, req, res, next) => {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === "production") {
         res.status(500).json({
             message: error.message,
             stack: error.stack,
